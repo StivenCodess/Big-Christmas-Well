@@ -24,7 +24,8 @@ const List = ({ ranking, winnerList }) => {
     setWinner({ name: event.target.value, amount: 10 });
   }
 
-  function handleClick() {
+  function handleSubmit(e) {
+    e.preventDefault();
     setInputShow("");
     setWinners([...winners, winner]);
     setCounter(counter + 1);
@@ -32,7 +33,7 @@ const List = ({ ranking, winnerList }) => {
 
   return (
     <div>
-      <form className="input-group mb-3">
+      <form className="input-group mb-3" onSubmit={(e) => handleSubmit(e)}>
         <h4 className="text-white">{ranking}</h4>
         <input
           type="text"
@@ -40,12 +41,7 @@ const List = ({ ranking, winnerList }) => {
           value={inputShow}
           disabled={validate() ? true : false}
         />
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleClick}
-          disabled={validate() ? true : false}
-        >
+        <button className="btn btn-primary" disabled={validate() ? true : false}>
           ADD
         </button>
       </form>
