@@ -1,21 +1,27 @@
 import { useState, useEffect } from "react";
 import Person from "./Person";
 
-const List = ({ ranking, winnerList }) => {
+const List = ({ ranking, winnerList, collected }) => {
   const INITIAL_INPUT = "";
   const INITIAL_WINNER = { name: "", amount: 0 };
   const [inputShow, setInputShow] = useState(INITIAL_INPUT);
   const [winner, setWinner] = useState(INITIAL_WINNER);
   const [winners, setWinners] = useState(winnerList);
   const [counter, setCounter] = useState(0);
-
+  useEffect(() => {
+    console.log(typeof collected);
+  });
   function validate() {
-    if (ranking !== 1) {
-      return false;
-    } else if (counter === 1) {
-      return true;
+    if (collected !== "") {
+      if (ranking !== 1) {
+        return false;
+      } else if (counter === 1) {
+        return true;
+      } else {
+        return null;
+      }
     } else {
-      return null;
+      return true;
     }
   }
 
@@ -56,3 +62,11 @@ const List = ({ ranking, winnerList }) => {
 };
 
 export default List;
+
+/**if (ranking !== 1) {
+        return false;
+      } else if (counter === 1) {
+        return true;
+      } else {
+        return null;
+      } */
