@@ -1,8 +1,4 @@
-import { useEffect } from "react";
 const Person = ({ winnerMap, earnings, counter }) => {
-  useEffect(() => {
-    console.log("render person");
-  });
   return (
     <li
       className="list-group-item d-flex justify-content-between align-items-center"

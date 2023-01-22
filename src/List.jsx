@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Person from "./Person";
 
-const List = ({ ranking, winnerList, collected }) => {
+const List = ({ ranking, winnerList, collected, disableInput, setDisableInput }) => {
   const INITIAL_INPUT = "";
   const INITIAL_WINNER = { name: "", amount: 0 };
   const [inputShow, setInputShow] = useState(INITIAL_INPUT);
   const [winner, setWinner] = useState(INITIAL_WINNER);
+  const [earnings, setEarnings] = useState(0);
   const [winners, setWinners] = useState(winnerList);
   const [counter, setCounter] = useState(0);
-  const [earnings, setEarnings] = useState(0);
-
-  useEffect(() => {
-    console.log("render list");
-  });
 
   function validate() {
     if (collected !== "") {
@@ -38,7 +34,7 @@ const List = ({ ranking, winnerList, collected }) => {
     setInputShow("");
     setWinners([...winners, winner]);
     setCounter(counter + 1);
-
+    setDisableInput((disableInput = true));
     switch (ranking) {
       case 1:
         setEarnings(collected * 0.5);
@@ -60,17 +56,25 @@ const List = ({ ranking, winnerList, collected }) => {
     }
   }
 
+  function h4Name() {
+    return;
+  }
+
   return (
     <div>
       <form className="input-group mb-3" onSubmit={(e) => handleSubmit(e)}>
-        <h4 className="text-white">{ranking}</h4>
+        <h4 className="text-white me-4">Puesto numero {ranking}</h4>
         <input
           type="text"
           onChange={handleChange}
           value={inputShow}
           disabled={validate() ? true : false}
+          className="rounded-1"
         />
-        <button className="btn btn-primary" disabled={validate() ? true : false}>
+        <button
+          className="btn btn-primary ms-2 rounded-2"
+          disabled={validate() ? true : false}
+        >
           ADD
         </button>
       </form>

@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import List from "./List";
 import { winnerList1, winnerList2, winnerList3, winnerList4, winnerList5 } from "./data";
 
 function App() {
   const [collected, setCollected] = useState("");
-  const [loading, setLoading] = useState("");
+  const [disableInput, setDisableInput] = useState(false);
   function handleChange(e) {
     setCollected(e.target.value);
   }
-
-  useEffect(() => {
-    console.log("render App");
-  });
 
   return (
     <div className="App bg-dark mt-5">
@@ -28,6 +24,7 @@ function App() {
             placeholder="Enter the money collected"
             onChange={(e) => handleChange(e)}
             required
+            disabled={disableInput ? true : false}
           />
           <span className="input-group-text">.00</span>
         </div>
@@ -35,11 +32,41 @@ function App() {
         <h2 className="text-primary mt-5">Ganadores</h2>
         <hr className="text-primary" />
 
-        <List collected={collected} ranking={1} winnerList={winnerList1}></List>
-        <List collected={collected} ranking={2} winnerList={winnerList2}></List>
-        <List collected={collected} ranking={3} winnerList={winnerList3}></List>
-        <List collected={collected} ranking={4} winnerList={winnerList4}></List>
-        <List collected={collected} ranking={5} winnerList={winnerList5}></List>
+        <List
+          collected={collected}
+          ranking={1}
+          winnerList={winnerList1}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        ></List>
+        <List
+          collected={collected}
+          ranking={2}
+          winnerList={winnerList2}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        ></List>
+        <List
+          collected={collected}
+          ranking={3}
+          winnerList={winnerList3}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        ></List>
+        <List
+          collected={collected}
+          ranking={4}
+          winnerList={winnerList4}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        ></List>
+        <List
+          collected={collected}
+          ranking={5}
+          winnerList={winnerList5}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        ></List>
       </div>
     </div>
   );
