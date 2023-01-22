@@ -8,9 +8,12 @@ const List = ({ ranking, winnerList, collected }) => {
   const [winner, setWinner] = useState(INITIAL_WINNER);
   const [winners, setWinners] = useState(winnerList);
   const [counter, setCounter] = useState(0);
+  const [earnings, setEarnings] = useState(0);
+
   useEffect(() => {
-    console.log(typeof collected);
+    console.log("render list");
   });
+
   function validate() {
     if (collected !== "") {
       if (ranking !== 1) {
@@ -35,6 +38,26 @@ const List = ({ ranking, winnerList, collected }) => {
     setInputShow("");
     setWinners([...winners, winner]);
     setCounter(counter + 1);
+
+    switch (ranking) {
+      case 1:
+        setEarnings(collected * 0.5);
+        break;
+      case 2:
+        setEarnings(collected * 0.2);
+        break;
+      case 3:
+        setEarnings(collected * 0.15);
+        break;
+      case 4:
+        setEarnings(collected * 0.1);
+        break;
+      case 5:
+        setEarnings(collected * 0.05);
+        break;
+      default:
+        break;
+    }
   }
 
   return (
@@ -54,7 +77,13 @@ const List = ({ ranking, winnerList, collected }) => {
 
       <ul className="list-group mb-3">
         {winners.map((winnerMap) => (
-          <Person key={winnerMap.name} winnerMap={winnerMap}></Person>
+          <Person
+            key={winnerMap.name}
+            winnerMap={winnerMap}
+            ranking={ranking}
+            earnings={earnings}
+            counter={counter}
+          ></Person>
         ))}
       </ul>
     </div>
@@ -62,11 +91,3 @@ const List = ({ ranking, winnerList, collected }) => {
 };
 
 export default List;
-
-/**if (ranking !== 1) {
-        return false;
-      } else if (counter === 1) {
-        return true;
-      } else {
-        return null;
-      } */

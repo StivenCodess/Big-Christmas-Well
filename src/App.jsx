@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import List from "./List";
-import { winnerList1, winnerList2 } from "./data";
+import { winnerList1, winnerList2, winnerList3, winnerList4, winnerList5 } from "./data";
 
 function App() {
   const [collected, setCollected] = useState("");
-
+  const [loading, setLoading] = useState("");
   function handleChange(e) {
     setCollected(e.target.value);
-    console.log(collected);
   }
+
+  useEffect(() => {
+    console.log("render App");
+  });
+
   return (
     <div className="App bg-dark mt-5">
       <div className="container-sm py-4 px-3 mx-auto ">
@@ -34,10 +37,9 @@ function App() {
 
         <List collected={collected} ranking={1} winnerList={winnerList1}></List>
         <List collected={collected} ranking={2} winnerList={winnerList2}></List>
-        {/* <List ranking={"2"} winnerList={winnerList2}></List>
-        <List ranking={"3"} winnerList={winnerList3}></List>
-        <List ranking={"4"} winnerList={winnerLis4}></List>
-        <List ranking={"5"} winnerList={winnerList5}></List> */}
+        <List collected={collected} ranking={3} winnerList={winnerList3}></List>
+        <List collected={collected} ranking={4} winnerList={winnerList4}></List>
+        <List collected={collected} ranking={5} winnerList={winnerList5}></List>
       </div>
     </div>
   );
