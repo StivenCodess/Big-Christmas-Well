@@ -57,13 +57,33 @@ const List = ({ ranking, winnerList, collected, disableInput, setDisableInput })
   }
 
   function h4Name() {
+    switch (ranking) {
+      case 1:
+        return "🥇";
+        break;
+      case 2:
+        return "🥈";
+        break;
+      case 3:
+        return "🥉";
+        break;
+      case 4:
+        return "4⃣";
+        break;
+      case 5:
+        return "5⃣";
+        break;
+
+      default:
+        break;
+    }
     return;
   }
 
   return (
     <div>
       <form className="input-group mb-3" onSubmit={(e) => handleSubmit(e)}>
-        <h4 className="text-white me-4">Puesto numero {ranking}</h4>
+        <h4 className="text-white me-4">Puesto {h4Name()}</h4>
         <input
           type="text"
           onChange={handleChange}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import List from "./List";
 import { winnerList1, winnerList2, winnerList3, winnerList4, winnerList5 } from "./data";
+import Money from "./Money";
 
 function App() {
   const [collected, setCollected] = useState("");
@@ -13,25 +14,14 @@ function App() {
     <div className="App bg-dark mt-5">
       <div className="container-sm py-4 px-3 mx-auto ">
         <h1 className="text-white">BIG CHRISTMAS WELL</h1>
-
-        <div className="input-group mb-3 ">
-          <span className="input-group-text">Money collected $</span>
-          <input
-            type="number"
-            className="form-control"
-            aria-label="Money collected"
-            value={collected}
-            placeholder="Enter the money collected"
-            onChange={(e) => handleChange(e)}
-            required
-            disabled={disableInput ? true : false}
-          />
-          <span className="input-group-text">.00</span>
-        </div>
-
-        <h2 className="text-primary mt-5">Ganadores</h2>
+        <Money
+          collected={collected}
+          setCollected={setCollected}
+          disableInput={disableInput}
+          setDisableInput={setDisableInput}
+        />
+        <h2 className="text-info ">Ganadores 🏆</h2>
         <hr className="text-primary" />
-
         <List
           collected={collected}
           ranking={1}
