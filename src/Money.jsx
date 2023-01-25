@@ -1,6 +1,13 @@
-const Money = ({ collected, setCollected, disableInput, setDisableInput }) => {
+const Money = ({ collected, setCollected, disableInput, setDisableInput, setReset }) => {
   function handleChange(e) {
     setCollected(e.target.value);
+  }
+  function handleClick() {
+    if (window.confirm("Do you want to delete everything?")) {
+      setCollected("");
+      setReset(true);
+      setDisableInput(false);
+    }
   }
   return (
     <>
@@ -19,7 +26,9 @@ const Money = ({ collected, setCollected, disableInput, setDisableInput }) => {
         <span className="input-group-text">.00</span>
       </div>
       <div className="d-flex justify-content-end">
-        <button className="btn btn-outline-danger btn-lg ">Reset</button>
+        <button className="btn btn-outline-danger btn-lg " onClick={handleClick}>
+          Reset
+        </button>
       </div>
     </>
   );

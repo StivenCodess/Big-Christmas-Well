@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Person from "./Person";
 
-const List = ({ ranking, winnerList, collected, disableInput, setDisableInput }) => {
+const List = ({
+  ranking,
+  winnerList,
+  collected,
+  disableInput,
+  setDisableInput,
+  reset,
+}) => {
   const INITIAL_INPUT = "";
   const INITIAL_WINNER = { name: "", amount: 0 };
   const [inputShow, setInputShow] = useState(INITIAL_INPUT);
@@ -9,6 +16,12 @@ const List = ({ ranking, winnerList, collected, disableInput, setDisableInput })
   const [earnings, setEarnings] = useState(0);
   const [winners, setWinners] = useState(winnerList);
   const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    setWinners([]);
+    setDisableInput(false);
+    setCounter(0);
+  }, [reset]);
 
   function validate() {
     if (collected !== "") {
@@ -79,7 +92,7 @@ const List = ({ ranking, winnerList, collected, disableInput, setDisableInput })
     }
     return;
   }
-
+  console.log(validate());
   return (
     <div>
       <form className="input-group mb-3" onSubmit={(e) => handleSubmit(e)}>
@@ -100,6 +113,7 @@ const List = ({ ranking, winnerList, collected, disableInput, setDisableInput })
       </form>
 
       <ul className="list-group mb-3">
+        {/* {console.log(ranking + winners)} */}
         {winners.map((winnerMap) => (
           <Person
             key={winnerMap.name}

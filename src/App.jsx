@@ -6,9 +6,7 @@ import Money from "./Money";
 function App() {
   const [collected, setCollected] = useState("");
   const [disableInput, setDisableInput] = useState(false);
-  function handleChange(e) {
-    setCollected(e.target.value);
-  }
+  const [reset, setReset] = useState(false);
 
   return (
     <div className="App bg-dark mt-5">
@@ -19,6 +17,7 @@ function App() {
           setCollected={setCollected}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          setReset={setReset}
         />
         <h2 className="text-info ">Ganadores 🏆</h2>
         <hr className="text-primary" />
@@ -28,6 +27,7 @@ function App() {
           winnerList={winnerList1}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          reset={reset}
         ></List>
         <List
           collected={collected}
@@ -35,6 +35,7 @@ function App() {
           winnerList={winnerList2}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          reset={reset}
         ></List>
         <List
           collected={collected}
@@ -42,6 +43,7 @@ function App() {
           winnerList={winnerList3}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          reset={reset}
         ></List>
         <List
           collected={collected}
@@ -49,6 +51,7 @@ function App() {
           winnerList={winnerList4}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          reset={reset}
         ></List>
         <List
           collected={collected}
@@ -56,6 +59,7 @@ function App() {
           winnerList={winnerList5}
           disableInput={disableInput}
           setDisableInput={setDisableInput}
+          reset={reset}
         ></List>
       </div>
     </div>
