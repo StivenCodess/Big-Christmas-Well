@@ -43,10 +43,13 @@ const List = ({
 
   function handleSubmit(e) {
     e.preventDefault();
-    setInputShow("");
-    setWinners([...winners, winner]);
-    setCounter(counter + 1);
-    setDisableInput((disableInput = true));
+    if (winner.name) {
+      setInputShow("");
+      setWinners([...winners, winner]);
+      setCounter(counter + 1);
+      setDisableInput((disableInput = true));
+    }
+
     switch (ranking) {
       case 1:
         setEarnings(collected * 0.5);

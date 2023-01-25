@@ -1,6 +1,8 @@
 const Money = ({ collected, setCollected, disableInput, setDisableInput, setReset }) => {
   function handleChange(e) {
-    setCollected(e.target.value);
+    if (e.target.value >= 0) {
+      setCollected(e.target.value);
+    }
   }
   function handleClick() {
     if (window.confirm("Do you want to delete everything?")) {
@@ -18,6 +20,7 @@ const Money = ({ collected, setCollected, disableInput, setDisableInput, setRese
         <span className="input-group-text">Money collected $</span>
         <input
           type="number"
+          min="0"
           className="form-control"
           aria-label="Money collected"
           value={collected}
