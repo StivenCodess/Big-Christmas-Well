@@ -16,6 +16,10 @@
   height: 100vh;
 }
 
+.edit-icon {
+  font-size: 1.7rem;
+  cursor: pointer;
+}
 /*
 a {
   font-weight: 500;

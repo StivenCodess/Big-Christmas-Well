@@ -9,7 +9,7 @@ const List = ({
   setDisableInput,
   reset,
 }) => {
-  const INITIAL_WINNER = { name: "", amount: 0 };
+  const INITIAL_WINNER = { name: "" };
   const [inputShow, setInputShow] = useState("");
   const [winner, setWinner] = useState(INITIAL_WINNER);
   const [earnings, setEarnings] = useState(0);
@@ -112,7 +112,6 @@ const List = ({
       </form>
 
       <ul className="list-group mb-3">
-        {/* {console.log(ranking + winners)} */}
         {winners.map((winnerMap) => (
           <Person
             key={winnerMap.name}

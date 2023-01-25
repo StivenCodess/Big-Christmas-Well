@@ -2,7 +2,7 @@ import { useState } from "react";
 import List from "./List";
 import { winnerList1, winnerList2, winnerList3, winnerList4, winnerList5 } from "./data";
 import Money from "./Money";
-
+import "./index.css";
 function App() {
   const [collected, setCollected] = useState("");
   const [disableInput, setDisableInput] = useState(false);
