@@ -91,7 +91,7 @@ const List = ({
     }
     return;
   }
-  console.log(validate());
+
   return (
     <div>
       <form className="input-group mb-3" onSubmit={(e) => handleSubmit(e)}>
@@ -120,6 +120,9 @@ const List = ({
             ranking={ranking}
             earnings={earnings}
             counter={counter}
+            winners={winners}
+            setWinners={setWinners}
+            setCounter={setCounter}
           ></Person>
         ))}
       </ul>
