@@ -9,16 +9,15 @@ const List = ({
   setDisableInput,
   reset,
 }) => {
-  const INITIAL_INPUT = "";
   const INITIAL_WINNER = { name: "", amount: 0 };
-  const [inputShow, setInputShow] = useState(INITIAL_INPUT);
+  const [inputShow, setInputShow] = useState("");
   const [winner, setWinner] = useState(INITIAL_WINNER);
   const [earnings, setEarnings] = useState(0);
   const [winners, setWinners] = useState(winnerList);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    setWinners([]);
+    setWinners(winnerList);
     setDisableInput(false);
     setCounter(0);
   }, [reset]);

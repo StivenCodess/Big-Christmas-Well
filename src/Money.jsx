@@ -7,6 +7,9 @@ const Money = ({ collected, setCollected, disableInput, setDisableInput, setRese
       setCollected("");
       setReset(true);
       setDisableInput(false);
+      setTimeout(() => {
+        setReset(false);
+      }, 200);
     }
   }
   return (
